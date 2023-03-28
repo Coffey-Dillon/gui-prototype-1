@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-sm-6 col-md-6 col-xs-offset-2 col-sm-offset-3 col-md-offset-3">
+            <form [formGroup]="stationForm">
+                <div class="form-group">
+                    <label for="Station">Station</label>
+                    <select 
+                        id="station"
+                        formControlName="Station"
+                        class="form-control"
+                        *ngIf="stationNames.length > 0; else noStations"
+                        (ngModelChange)="setStation()"
+                        name="station"
+                        required>
+                        <option value="default">Select a Station</option>
+                        <option *ngFor="let stationName of stationNames" 
+                            value="{{stationName}}">{{ stationName }}</option>
+                    </select>
+                    <ng-template #noStations>
+                        <p>No Stations</p>
+                    </ng-template>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <app-uav-interface [station]="currentStation"></app-uav-interface>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <app-uav-interface [station]="currentStation"></app-uav-interface>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <app-uav-interface [station]="currentStation"></app-uav-interface>
+            </div>
+        </div>
+    </div>
+</div>

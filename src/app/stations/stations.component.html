@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8">
+            <form #stationForm="ngForm" (ngSubmit)="onCreateStation(stationForm.value)">
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input 
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        required
+                        ngModel
+                        name="name">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <input 
+                        type="text"
+                        class="form-control"
+                        id="status"
+                        required
+                        ngModel
+                        name="status">
+                </div>
+                <button 
+                    class="btn btn-primary"
+                    type="submit"
+                    [disabled]="!stationForm.valid">
+                    Add New Station
+                    </button>
+            </form>
+        </div>
+    </div>
+</div>

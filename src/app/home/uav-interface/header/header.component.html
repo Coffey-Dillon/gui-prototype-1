@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            <form [formGroup]="uavSelectForm">
+                <div class="form-group">
+                    <label for="UAV">UAV</label>
+                    <select 
+                        id="uav-selector"
+                        formControlName="UAV"
+                        class="form-control"
+                        (ngModelChange)="setCurrUav()"
+                        name="uavSelector"
+                        required>
+                        <option value="default">Select a UAV</option>
+                        <ng-container *ngFor="let uav of uavs">
+                            <option *ngIf="uav.station === currStation" [ngValue]="uav">{{ uav.name }}</option>
+                        </ng-container>
+                    </select>
+                </div>
+            </form>
+                <p>{{ currStation }}</p>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1">
+            <div class="left" *ngIf="currUav != null">
+                <h6>Name: {{ currUav.name }}</h6>
+            </div>
+            <div class="left" *ngIf="currUav == null">
+                <h6>Name: </h6>
+            </div>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1">
+            <div class="left" *ngIf="currUav != null">    
+                <h6>Battery: {{ currUav.batteryPercentage }}</h6>
+            </div>
+            <div class="left" *ngIf="currUav == null">    
+                <h6>Battery: </h6>
+            </div> 
+        </div>
+        
+    </div>
+</div>
